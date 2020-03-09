@@ -15,11 +15,7 @@ def about():
 def contact():
     return render_template("contact.html")
 
-@app.route("/careers")
-def careers():
-    return render_template("careers.html")
-
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
+    app.run(host=os.environ.get("IP", '0.0.0.0'),
+            port=int(os.environ.get("PORT", "8080")),
             debug=True)
