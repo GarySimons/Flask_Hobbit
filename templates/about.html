@@ -23,9 +23,11 @@
 
     {% for member in company %}
 
+    {% if loop.index % 2 != 0 %}
+
     <div class="row featurette">
         <div class="col-md-7">
-          <h3>{{ member.name }}</h3>
+          <h3>{{ loop.index }} {{ member.name }}</h3>
             <p>
                 {{ member.description }}
             </p>
@@ -33,8 +35,27 @@
         <div class="col-md5">
                 <img class="featurette-image img-responsive" src="{{ member.image_source }}">
         </div>
+
+        {% else %}
+        <div class="col-md5">
+                <img class="featurette-image img-responsive" src="{{ member.image_source }}">
+        </div>
+        <div class="col-md-7">
+          <h3>{{ loop.index }} {{ member.name }}</h3>
+            <p>
+                {{ member.description }}
+            </p>
+        </div>
+
+        {% endif %}
+
     </div>
+
+    {% if loop.index !=13 %}
+
     <hr class="featurette-divider">
+
+    {% endif %}
 
     {% endfor %}
 
